@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@font-face {
+    font-family: "Cronus";
+    src: url("assets/cronusRound.otf") format("opentype");
+}
+
+/* General Styling */
+:root {
+    --bg-begin: #0D111C;
+    --bg-end: rgba(144, 90, 149, 0.79);
+    --accent: #C38CB2;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-image: linear-gradient(to bottom, var(--bg-begin) , var(--bg-end));
+    color: white;
+    font-family: 'Poppins';
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--bg-begin);
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--accent);
+}
+
+hr {
+    margin: 3vh 0;
+    background-color: var(--accent);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+@media only screen and (min-width: 1000px) {
+    #main-hr {
+        margin: 1vh 0 3vh;
+    }
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+/* Page Details */
+@media only screen and (min-width: 2000px) {
+    #center {
+        width: 55%;
+        margin: 3vh auto;
+    }
+
+    .mobile-bar {
+        display: none;
+    }
+}
+@media only screen and (min-width: 1000px) and (max-width: 2000px) {
+    #center {
+        width: 55%;
+        margin: 3vh auto;
+    }
+
+    .mobile-bar {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #center {
+        width: 95%;
+        margin: 3vh auto;
+    }
+}
+
+#center #logo {
+    max-height: 10vh;
+}
+
+#center #title {
+    text-align: right;
+}
+
+.title-text {
+    margin: 0;
+    font-weight: 100;
+    line-height: 0.9em;
+    font-family: 'Cronus';
+}
+
+#title h2 {
+    font-size: 9vh;
+}
+#title h1 {
+    font-size: 12vh;
+}
+@media only screen and (max-width: 1000px) {
+    #title h2 {
+        font-size: 7vh;
+        margin-top: 3vh;
+    }
+    #title h1 {
+        font-size: 10vh;
+    }
+}
+
+/* Countdown */
+@media only screen and (min-width: 1000px) {
+    #center #countdown {
+        display: flex;
+        flex-direction: row;
+        font-size: 4vh;
+        text-align: center;
+        justify-content: space-between;
+        width: 80%;
+        margin: 7vh auto;
+    }
+
+    #countdown .time-box {
+        flex: 1;
+        margin: 0;
+        font-size: 2vh;
+    }
+    
+    .time-box p {
+        font-size: 6vh;
+        margin: 1vh 0;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #center #countdown {
+        display: flex;
+        flex-direction: row;
+        font-size: 4vh;
+        text-align: center;
+        justify-content: space-between;
+        margin: 1vh auto;
+    }
+
+    #countdown .time-box {
+        flex: 1;
+        margin: 0;
+        font-size: 1vh;
+    }
+    
+    .time-box p {
+        font-size: 3vh;
+        margin: 2vh 0;
+    }
+}
+
+/* Info One */
+@media only screen and (min-width: 1000px) {
+    #center #info-one {
+        margin: 3vh 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #dates {
+        width: 50%;
+        text-align: center;
+        border-right: 2px solid var(--accent);
+    }
+
+    #register {
+        width: 50%;
+        text-align: center;
+    }
+
+    .date-wrap p {
+        text-align: left;
+        font-size: 1.5vh;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #center #info-one {
+        margin: 3vh 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #dates {
+        text-align: center;
+    }
+
+    #register {
+        text-align: center;
+    }
+
+    .date-wrap p {
+        text-align: center;
+        font-size: 1.5vh;
+    }
+}
+
+#dates h4 {
+    font-size: 3vh;
+    margin: 1vh 0;
+    font-weight: 400;
+}
+
+.date-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#register h3 {
+    margin: 1vh 0;
+    font-size: 4vh;
+    font-weight: 400;
+}
+
+#register button {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    border-radius: 2px;
+    color: white;
+    width: 9em;
+    height: 2.3em;
+    font-size: 2.5vh;
+    margin: 1vh;
+    transition: 0.25s;
+}
+
+#register button:hover {
+    /* cursor: not-allowed; */
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+/* Info two and three */
+@media only screen and (min-width: 1000px) {
+    #flex-h1 {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    #flex-h2 {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    
+    #flex-h1 p {
+        margin: 1vh 0 1vh auto;
+        
+    }
+    
+    #flex-h2 p {
+        margin: 1vh auto 1vh 0;    
+    }
+
+    .lower-info img {
+        max-width: 38%;
+        height: auto;
+        border-radius: 5px;
+    }
+    
+    .lower-info p {
+        width: 50%;
+        font-size: 1.8vh;
+        padding-top: 1vh;
+    }
+
+    .lower-info {
+        width: 90%;
+        margin: 6vh auto;
+    }
+
+    .lower-info h2 {
+        text-align: center;
+        font-size: 3.5vh;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #flex-h1 {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #flex-h2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lower-info img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin: 2vh auto 3vh;
+    }
+    
+    .lower-info p {
+        width: 95%;
+        margin: auto;
+        font-size: 1.8vh;
+    }
+
+    .lower-info {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .lower-info h2 {
+        font-size: 3vh;
+    }
+}
+
+
+/* Company Attendees */
+.company-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 45%);
+    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.company-logos img {
+    margin: auto;
+    text-align: center;
+}
