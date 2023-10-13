@@ -1,15 +1,27 @@
 
-// Talent day start day
-var countDownDate = new Date("Oct 12, 2023 11:00:00").getTime();
+window.addEventListener("load", async () => { 
 
-// From w3 schools (https://www.w3schools.com/howto/howto_js_countdown.asp)
-var x = setInterval(function() {
-    // Get today's date and time
-    var now = new Date().getTime();
-  
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-  
+  // Fetch site config
+  let rawData = await fetch("/config.json")
+  let config = await rawData.json()
+
+  // Inject Registration or GatherTown Link
+  const linkTarget = document.getElementById("register")
+  const links = config['formLinks']
+  linkTarget.innerHTML = `
+    <h3>Register Now:</h3>
+    <button onclick="location.href='${links['students']}'">Students</button><br>
+    <button onclick="location.href='${links['employers']}'">Employers</button>
+  `
+
+  // Start Countdown
+  let x = setInterval( () => {
+
+    // Calculate distance to next deadline
+    startTimes = config['startTimes']
+    distance = calculateTimeDifference(startTimes['dayOne'])
+    // if (distance < 0) distance = calculateTimeDifference(startTimes['dayTwo'])
+
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -21,21 +33,34 @@ var x = setInterval(function() {
     hours = String(hours).padStart(2, '0')
     minutes = String(minutes).padStart(2, '0')
     seconds = String(seconds).padStart(2, '0')
-  
+
     // Display inside the "time-box" divs
     document.getElementById("days").innerHTML = days;
     document.getElementById("hours").innerHTML = hours;
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("seconds").innerHTML = seconds;
-  
-    // If the count down is finished, state it has started
-    if (distance < 0) {
+
+    // Stop if counter is done
+    if (distance < 0) {      
       clearInterval(x);
       var item = document.getElementById("countdown");
-      item.innerHTML = "Talent Day has Begun!";
+      item.innerHTML = "Talent Day has Started!";
       item.style.display = 'block';
-    }
-}, 1000);
+      linkTarget.innerHTML = `
+        <h3>Day Two Talentday:</h3>
+        <button onclick="location.href='${config['gathertownLink']}'">Join GatherTown</button><br>
+      `
+    } 
+  }, 1000);
+
+})
+
+
+function calculateTimeDifference(targetTime) {
+  var now = new Date().getTime();
+  var targetDate = new Date(targetTime)
+  return targetDate - now;
+}
 
 // Redirect to forms
 function addRedirect(bt, site) {
