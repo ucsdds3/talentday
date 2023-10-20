@@ -1,7 +1,7 @@
 {
-    "startTimes": {
-        "dayOne": "Oct 12, 2023 11:00:00",
-        "dayTwo": "Oct 13, 2023 10:00:00"
+    "times": {
+        "start": "Oct 12, 2023 11:00:00",
+        "end": "Oct 13, 2023 12:00:00"
     },
     "formLinks": {
         "students": "https://www.eventbrite.com/e/2023-data-science-talent-day-tickets-704970043377?aff=oddtdtcreator",

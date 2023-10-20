@@ -18,9 +18,8 @@ window.addEventListener("load", async () => {
   let x = setInterval( () => {
 
     // Calculate distance to next deadline
-    startTimes = config['startTimes']
-    distance = calculateTimeDifference(startTimes['dayOne'])
-    // if (distance < 0) distance = calculateTimeDifference(startTimes['dayTwo'])
+    times = config['times']
+    distance = calculateTimeDifference(times['start'])
 
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -41,15 +40,26 @@ window.addEventListener("load", async () => {
     document.getElementById("seconds").innerHTML = seconds;
 
     // Stop if counter is done
-    if (distance < 0) {      
-      clearInterval(x);
-      var item = document.getElementById("countdown");
-      item.innerHTML = "Talent Day has Started!";
-      item.style.display = 'block';
-      linkTarget.innerHTML = `
-        <h3>Day Two Talentday:</h3>
-        <button onclick="location.href='${config['gathertownLink']}'">Join GatherTown</button><br>
-      `
+    if (distance < 0) {   
+      if (calculateTimeDifference(times['end']) < 0) {
+        clearInterval(x);
+        var item = document.getElementById("countdown");
+        item.innerHTML = "Talent Day has Conculeded!";
+        item.style.display = 'block';
+        linkTarget.innerHTML = `
+          <h3>Join us next year!</h3>
+          <button onclick="location.href='https://www.ds3ucsd.com/'">Check Out DS3</button><br>
+        `
+      } else {
+        clearInterval(x);
+        var item = document.getElementById("countdown");
+        item.innerHTML = "Talent Day has Started!";
+        item.style.display = 'block';
+        linkTarget.innerHTML = `
+          <h3>Day Two Talentday:</h3>
+          <button onclick="location.href='${config['gathertownLink']}'">Join GatherTown</button><br>
+        `
+      }
     } 
   }, 1000);
 
